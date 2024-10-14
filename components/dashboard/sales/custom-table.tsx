@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { BanknotesIcon } from "@heroicons/react/24/outline";
 import {
   Table,
   TableBody,
@@ -19,13 +18,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { FileText, FileSpreadsheet } from "lucide-react";
 
 interface DataItem {
   id: number;
@@ -128,29 +120,10 @@ CustomTableProps) {
 
   return (
     <div className="w-full">
-      <div className="flex w-full justify-end">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="secondary" className="bg-green-200">
-              <span className="sr-only">Open menu</span>
-              Export Document
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => {}}>
-              <FileText className="mr-2 h-4 w-4" />
-              <span>PDF</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => {}}>
-              <FileSpreadsheet className="mr-2 h-4 w-4" />
-              <span>Excel</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => {}}>
-              <BanknotesIcon className="mr-2 h-4 w-4" />
-              <span>Bank Report</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+      <div className="flex w-full justify-end gap-3">
+        <Button>Excel</Button>
+        <Button>PDF</Button>
+        <Button>Word</Button>
       </div>
       <Table>
         <TableHeader>
@@ -162,14 +135,19 @@ CustomTableProps) {
                 aria-label="Select all"
               />
             </TableHead>
-            <TableHead className="w-[100px]">ID</TableHead>
             <TableHead>Date</TableHead>
             <TableHead>Farmer</TableHead>
-            <TableHead>Mauzo(Kg)</TableHead>
-            <TableHead>Amount</TableHead>
-            <TableHead>Commission(%)</TableHead>
-            <TableHead>Makato</TableHead>
-            <TableHead className="text-right">Kiwango anachopata</TableHead>
+            <TableHead>Jinsia</TableHead>
+            <TableHead>Umri</TableHead>
+            <TableHead>Kata</TableHead>
+            <TableHead>Kijiji</TableHead>
+            <TableHead>Kanda</TableHead>
+            <TableHead>Namba ya simu</TableHead>
+            <TableHead>Akaunti namba</TableHead>
+            <TableHead>Jumla ya kilo</TableHead>
+            <TableHead>Jumla ya mauzo</TableHead>
+            <TableHead>Malipo ya mkulima</TableHead>
+            <TableHead className="text-right">Malipo ya Uwamambo</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -184,14 +162,19 @@ CustomTableProps) {
                   aria-label={`Select ${item}`}
                 />
               </TableCell>
-              <TableCell className="font-medium">{item.id}</TableCell>
               <TableCell>{item.date}</TableCell>
               <TableCell>{item.farmer}</TableCell>
+              <TableCell>{}</TableCell>
+              <TableCell>{}</TableCell>
+              <TableCell>{}</TableCell>
+              <TableCell>{}</TableCell>
+              <TableCell>{}</TableCell>
+              <TableCell>{}</TableCell>
+              <TableCell>{}</TableCell>
               <TableCell>{item.weight}</TableCell>
               <TableCell>{item.amount}</TableCell>
-              <TableCell>{item.commission}</TableCell>
-              <TableCell>{item.uwamambo}</TableCell>
-              <TableCell className="text-right">{item.mkulima}</TableCell>
+              <TableCell>{item.mkulima}</TableCell>
+              <TableCell className="text-right">{item.uwamambo}</TableCell>
               {/* <TableCell>{getStatusBadge(item.status)}</TableCell> */}
             </TableRow>
           ))}

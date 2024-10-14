@@ -4,6 +4,7 @@ import {
   ShoppingBagIcon,
   UsersIcon,
   ChartPieIcon,
+  BanknotesIcon,
   Squares2X2Icon,
 } from "@heroicons/react/24/outline";
 import { SproutIcon } from "lucide-react";
@@ -17,7 +18,8 @@ const links = [
   { name: "Dashboard", href: "/dashboard", icon: Squares2X2Icon },
   { name: "Farmers", href: "/dashboard/farmers", icon: UsersIcon },
   // { name: "Sales", href: "/dashboard/sales", icon: TagIcon },
-  { name: "Sales", href: "/dashboard/sales", icon:  ShoppingBagIcon },
+  { name: "Sales", href: "/dashboard/sales", icon: ShoppingBagIcon },
+  { name: "Bank Report", href: "/dashboard/reports", icon: BanknotesIcon },
   { name: "Reports", href: "/dashboard/reports", icon: ChartPieIcon },
   { name: "Farms", href: "/dashboard/farms", icon: SproutIcon },
 ];
