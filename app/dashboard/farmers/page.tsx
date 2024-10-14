@@ -1,9 +1,8 @@
-import CustomTable from "@/components/dashboard/custom-table";
+import CustomTable from "@/components/dashboard/farmers/custom-table";
 import { getDocuments } from "@/firestore";
 
 export default async function Farmers() {
   const farmers = await getDocuments();
-  console.log(farmers);
   const data = farmers.map((farmer) => {
     return {
       id: farmer.id,

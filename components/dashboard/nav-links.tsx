@@ -1,11 +1,12 @@
 "use client";
 
 import {
-  HomeIcon,
   ShoppingBagIcon,
-  TagIcon,
+  UsersIcon,
   ChartPieIcon,
+  Squares2X2Icon,
 } from "@heroicons/react/24/outline";
+import { SproutIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
@@ -13,13 +14,12 @@ import clsx from "clsx";
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
-  { name: "Home", href: "/dashboard", icon: HomeIcon },
-  { name: "Farmers", href: "/dashboard/farmers", icon: TagIcon },
-  { name: "Farms", href: "/dashboard/farms", icon: ShoppingBagIcon },
+  { name: "Dashboard", href: "/dashboard", icon: Squares2X2Icon },
+  { name: "Farmers", href: "/dashboard/farmers", icon: UsersIcon },
   // { name: "Sales", href: "/dashboard/sales", icon: TagIcon },
-  { name: "Sales", href: "/dashboard/sales", icon: TagIcon },
-
+  { name: "Sales", href: "/dashboard/sales", icon:  ShoppingBagIcon },
   { name: "Reports", href: "/dashboard/reports", icon: ChartPieIcon },
+  { name: "Farms", href: "/dashboard/farms", icon: SproutIcon },
 ];
 
 export default function NavLinks() {
