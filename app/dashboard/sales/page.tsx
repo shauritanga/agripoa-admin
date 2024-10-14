@@ -27,7 +27,7 @@ export default async function Sales() {
 
   return (
     <div>
-      Hello
+      <h1>All Sales</h1>
       <CustomTable
         data={data}
         initialRowsPerPage={5}
