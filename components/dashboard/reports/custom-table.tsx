@@ -18,24 +18,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import SalesDownload from "./sales-download";
+import ReportDownload from "./bank-report-download";
 import { exportToExcel } from "@/lib/export_excel";
 
 interface DataItem {
   id: number;
   farmer: string;
-  amount: string;
-  weight: number;
-  date: string;
-  commission: number;
-  zone: string;
-  age: number;
-  gender: string;
-  village: string;
-  ward: string;
-  uwamambo: string;
   mkulima: string;
-  phone: string;
   account: string;
   //   status: "active" | "inactive" | "pending";
 }
@@ -47,7 +36,7 @@ interface CustomTableProps {
   // onDelete: (id: number) => void;
 }
 
-export default function CustomTable({
+export default function BankReportTable({
   data,
   initialRowsPerPage = 5,
 }: //   onView,
@@ -56,7 +45,7 @@ CustomTableProps) {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [selectedItems, setSelectedItems] = React.useState<number[]>([]);
   const [rowsPerPage, setRowsPerPage] = React.useState(initialRowsPerPage);
-  const [filterType] = React.useState<"date">("date");
+  const [filterType] = React.useState<"farmer">("farmer");
   const [filterValue] = React.useState("");
 
   const filteredData = React.useMemo(() => {
@@ -130,9 +119,11 @@ CustomTableProps) {
   return (
     <div className="w-full">
       <div className="flex w-full justify-end gap-3">
-        <Button onClick={() => exportToExcel(data, "sales")}>Excel</Button>
+        <Button onClick={() => exportToExcel(data, "bank_report")}>
+          Excel
+        </Button>
         <Button>
-          <SalesDownload sales={data} />
+          <ReportDownload reports={data} />
         </Button>
         <Button>Word</Button>
       </div>
@@ -146,19 +137,9 @@ CustomTableProps) {
                 aria-label="Select all"
               />
             </TableHead>
-            <TableHead>Date</TableHead>
-            <TableHead>Farmer</TableHead>
-            <TableHead>Jinsia</TableHead>
-            <TableHead>Umri</TableHead>
-            <TableHead>Kata</TableHead>
-            <TableHead>Kijiji</TableHead>
-            <TableHead>Kanda</TableHead>
-            <TableHead>Namba ya simu</TableHead>
+            <TableHead>Jina la mkulima</TableHead>
             <TableHead>Akaunti namba</TableHead>
-            <TableHead>Jumla ya kilo</TableHead>
-            <TableHead>Jumla ya mauzo</TableHead>
             <TableHead>Malipo ya mkulima</TableHead>
-            <TableHead className="text-right">Malipo ya Uwamambo</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -173,19 +154,10 @@ CustomTableProps) {
                   aria-label={`Select ${item}`}
                 />
               </TableCell>
-              <TableCell>{item.date}</TableCell>
               <TableCell>{item.farmer}</TableCell>
-              <TableCell>{item.gender}</TableCell>
-              <TableCell>{item.age}</TableCell>
-              <TableCell>{item.ward}</TableCell>
-              <TableCell>{item.village}</TableCell>
-              <TableCell>{item.zone}</TableCell>
-              <TableCell>{item.phone}</TableCell>
               <TableCell>{item.account}</TableCell>
-              <TableCell>{item.weight}</TableCell>
-              <TableCell>{item.amount}</TableCell>
               <TableCell>{item.mkulima}</TableCell>
-              <TableCell className="text-right">{item.uwamambo}</TableCell>
+
               {/* <TableCell>{getStatusBadge(item.status)}</TableCell> */}
             </TableRow>
           ))}

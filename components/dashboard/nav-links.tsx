@@ -20,7 +20,7 @@ const links = [
   // { name: "Sales", href: "/dashboard/sales", icon: TagIcon },
   { name: "Sales", href: "/dashboard/sales", icon: ShoppingBagIcon },
   { name: "Bank Report", href: "/dashboard/reports", icon: BanknotesIcon },
-  { name: "Reports", href: "/dashboard/reports", icon: ChartPieIcon },
+  { name: "Reports", href: "", icon: ChartPieIcon },
   { name: "Farms", href: "/dashboard/farms", icon: SproutIcon },
 ];
 
