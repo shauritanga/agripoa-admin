@@ -9,7 +9,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -54,7 +53,7 @@ export default function CustomTable({
 //   onDelete,
 CustomTableProps) {
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [selectedItems, setSelectedItems] = React.useState<number[]>([]);
+  // const [selectedItems, setSelectedItems] = React.useState<number[]>([]);
   const [rowsPerPage, setRowsPerPage] = React.useState(initialRowsPerPage);
   const [filterType] = React.useState<"date">("date");
   const [filterValue] = React.useState("");
@@ -77,21 +76,21 @@ CustomTableProps) {
 
   const currentPageData = getCurrentPageData();
 
-  const handleSelectAll = (checked: boolean) => {
-    if (checked) {
-      setSelectedItems(currentPageData.map((item) => item.id));
-    } else {
-      setSelectedItems([]);
-    }
-  };
+  // const handleSelectAll = (checked: boolean) => {
+  //   if (checked) {
+  //     setSelectedItems(currentPageData.map((item) => item.id));
+  //   } else {
+  //     setSelectedItems([]);
+  //   }
+  // };
 
-  const handleSelectItem = (id: number, checked: boolean) => {
-    if (checked) {
-      setSelectedItems((prev) => [...prev, id]);
-    } else {
-      setSelectedItems((prev) => prev.filter((item) => item !== id));
-    }
-  };
+  // const handleSelectItem = (id: number, checked: boolean) => {
+  //   if (checked) {
+  //     setSelectedItems((prev) => [...prev, id]);
+  //   } else {
+  //     setSelectedItems((prev) => prev.filter((item) => item !== id));
+  //   }
+  // };
 
   const handleRowsPerPageChange = (value: string) => {
     const newRowsPerPage = parseInt(value, 10);
@@ -110,9 +109,9 @@ CustomTableProps) {
   //   setCurrentPage(1);
   // };
 
-  const isAllSelected = currentPageData.every((item) =>
-    selectedItems.includes(item.id)
-  );
+  // const isAllSelected = currentPageData.every((item) =>
+  //   selectedItems.includes(item.id)
+  // );
 
   //   const getStatusBadge = (status: DataItem["status"]) => {
   //     const statusStyles = {
@@ -139,15 +138,15 @@ CustomTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[50px]">
+            {/* <TableHead className="w-[50px]">
               <Checkbox
                 checked={isAllSelected}
                 onCheckedChange={handleSelectAll}
                 aria-label="Select all"
               />
-            </TableHead>
-            <TableHead>Date</TableHead>
-            <TableHead>Farmer</TableHead>
+            </TableHead> */}
+            {/* <TableHead>Date</TableHead> */}
+            <TableHead>Jina Kamili</TableHead>
             <TableHead>Jinsia</TableHead>
             <TableHead>Umri</TableHead>
             <TableHead>Kata</TableHead>
@@ -164,7 +163,7 @@ CustomTableProps) {
         <TableBody>
           {currentPageData.map((item) => (
             <TableRow key={item.id}>
-              <TableCell>
+              {/* <TableCell>
                 <Checkbox
                   checked={selectedItems.includes(item.id)}
                   onCheckedChange={(checked) =>
@@ -172,8 +171,8 @@ CustomTableProps) {
                   }
                   aria-label={`Select ${item}`}
                 />
-              </TableCell>
-              <TableCell>{item.date}</TableCell>
+              </TableCell> */}
+              {/* <TableCell>{item.date}</TableCell> */}
               <TableCell>{item.farmer}</TableCell>
               <TableCell>{item.gender}</TableCell>
               <TableCell>{item.age}</TableCell>
@@ -212,9 +211,9 @@ CustomTableProps) {
           </Button>
         </div>
         <div className="flex items-center space-x-2">
-          <p className="text-sm text-gray-500">
+          {/* <p className="text-sm text-gray-500">
             {selectedItems.length} of {filteredData.length} item(s) selected
-          </p>
+          </p> */}
           <Select
             value={rowsPerPage.toString()}
             onValueChange={handleRowsPerPageChange}

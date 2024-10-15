@@ -7,9 +7,7 @@ export default async function Farmers() {
     return {
       id: farmer.id,
       date: farmer.dob,
-      fname: farmer.first_name,
-      lname: farmer.last_name,
-      mname: farmer.middle_name,
+      name: `${farmer.first_name} ${farmer.middle_name} ${farmer.last_name}`,
       gender: farmer.gender,
       ward: farmer.ward,
       village: farmer.village,

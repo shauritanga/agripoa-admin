@@ -9,7 +9,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -29,9 +28,7 @@ import { MoreVertical, Eye, Trash2 } from "lucide-react";
 
 interface DataItem {
   id: number;
-  fname: string;
-  lname: string;
-  mname: string;
+  name: string;
   gender: string;
   ward: string;
   village: string;
@@ -61,7 +58,7 @@ export default function CustomTable({
 //   onDelete,
 CustomTableProps) {
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [selectedItems, setSelectedItems] = React.useState<number[]>([]);
+  // const [selectedItems, setSelectedItems] = React.useState<number[]>([]);
   const [rowsPerPage, setRowsPerPage] = React.useState(initialRowsPerPage);
   const [filterType, setFilterType] = React.useState<"date">("date");
   const [filterValue, setFilterValue] = React.useState("");
@@ -100,21 +97,21 @@ CustomTableProps) {
 
   const currentPageData = getCurrentPageData();
 
-  const handleSelectAll = (checked: boolean) => {
-    if (checked) {
-      setSelectedItems(currentPageData.map((item) => item.id));
-    } else {
-      setSelectedItems([]);
-    }
-  };
+  // const handleSelectAll = (checked: boolean) => {
+  //   if (checked) {
+  //     setSelectedItems(currentPageData.map((item) => item.id));
+  //   } else {
+  //     setSelectedItems([]);
+  //   }
+  // };
 
-  const handleSelectItem = (id: number, checked: boolean) => {
-    if (checked) {
-      setSelectedItems((prev) => [...prev, id]);
-    } else {
-      setSelectedItems((prev) => prev.filter((item) => item !== id));
-    }
-  };
+  // const handleSelectItem = (id: number, checked: boolean) => {
+  //   if (checked) {
+  //     setSelectedItems((prev) => [...prev, id]);
+  //   } else {
+  //     setSelectedItems((prev) => prev.filter((item) => item !== id));
+  //   }
+  // };
 
   const handleRowsPerPageChange = (value: string) => {
     const newRowsPerPage = parseInt(value, 10);
@@ -133,9 +130,9 @@ CustomTableProps) {
     setCurrentPage(1);
   };
 
-  const isAllSelected = currentPageData.every((item) =>
-    selectedItems.includes(item.id)
-  );
+  // const isAllSelected = currentPageData.every((item) =>
+  //   selectedItems.includes(item.id)
+  // );
 
   //   const getStatusBadge = (status: DataItem["status"]) => {
   //     const statusStyles = {
@@ -175,24 +172,24 @@ CustomTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[50px]">
+            {/* <TableHead className="w-[50px]">
               <Checkbox
                 checked={isAllSelected}
                 onCheckedChange={handleSelectAll}
                 aria-label="Select all"
               />
-            </TableHead>
-            <TableHead className="w-[100px]">ID</TableHead>
-            <TableHead>First name</TableHead>
-            <TableHead>Middle name</TableHead>
-            <TableHead>Last name</TableHead>
-            <TableHead>Gender</TableHead>
-            <TableHead>Date of Birth</TableHead>
+            </TableHead> */}
+            {/* <TableHead className="w-[100px]">ID</TableHead> */}
+            <TableHead>Jina kamili</TableHead>
+            {/* <TableHead>Jina la Pili</TableHead>
+            <TableHead>Jina la ukoo</TableHead> */}
+            <TableHead>Jinsia</TableHead>
+            <TableHead>Tarehe ya kuzaliwa</TableHead>
             <TableHead>NIDA</TableHead>
-            <TableHead>Ward</TableHead>
-            <TableHead>Village</TableHead>
-            <TableHead>Zone</TableHead>
-            <TableHead>Phone</TableHead>
+            <TableHead>Kata</TableHead>
+            <TableHead>Kijiji</TableHead>
+            <TableHead>Kanda</TableHead>
+            <TableHead>Namba ya simu</TableHead>
             <TableHead>Miti yenye matunda</TableHead>
             <TableHead>Miti isiyo na matunda</TableHead>
             <TableHead>Namba ya akaunti</TableHead>
@@ -202,9 +199,11 @@ CustomTableProps) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {currentPageData.map((item) => (
-            <TableRow key={item.id}>
-              <TableCell>
+          {currentPageData.map((item) => {
+            const isNAN = Number.isNaN(item.nomatunda);
+            return (
+              <TableRow key={item.id}>
+                {/* <TableCell>
                 <Checkbox
                   checked={selectedItems.includes(item.id)}
                   onCheckedChange={(checked) =>
@@ -212,45 +211,47 @@ CustomTableProps) {
                   }
                   aria-label={`Select ${item}`}
                 />
-              </TableCell>
-              <TableCell className="font-medium">{item.id}</TableCell>
-              <TableCell>{item.fname}</TableCell>
+              </TableCell> */}
+                {/* <TableCell className="font-medium">{item.id}</TableCell> */}
+                {/* <TableCell>{item.fname}</TableCell>
               <TableCell>{item.mname}</TableCell>
-              <TableCell>{item.lname}</TableCell>
-              <TableCell>{item.gender}</TableCell>
-              <TableCell>{item.date}</TableCell>
-              <TableCell>{item.nida}</TableCell>
-              <TableCell>{item.ward}</TableCell>
-              <TableCell>{item.village}</TableCell>
-              <TableCell>{item.zone}</TableCell>
-              <TableCell>{item.phone}</TableCell>
-              <TableCell>{item.matunda}</TableCell>
-              <TableCell>{item.nomatunda}</TableCell>
-              <TableCell>{item.account}</TableCell>
-              <TableCell>{item.bank}</TableCell>
-              {/* <TableCell>{getStatusBadge(item.status)}</TableCell> */}
-              <TableCell className="text-right">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="h-8 w-8 p-0">
-                      <span className="sr-only">Open menu</span>
-                      <MoreVertical className="h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuItem onClick={() => {}}>
-                      <Eye className="mr-2 h-4 w-4" />
-                      <span>View</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => {}}>
-                      <Trash2 className="mr-2 h-4 w-4" />
-                      <span>Delete</span>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </TableCell>
-            </TableRow>
-          ))}
+              <TableCell>{item.lname}</TableCell> */}
+                <TableCell>{item.name}</TableCell>
+                <TableCell>{item.gender}</TableCell>
+                <TableCell>{item.date}</TableCell>
+                <TableCell>{item.nida}</TableCell>
+                <TableCell>{item.ward}</TableCell>
+                <TableCell>{item.village}</TableCell>
+                <TableCell>{item.zone}</TableCell>
+                <TableCell>{item.phone}</TableCell>
+                <TableCell>{item.matunda}</TableCell>
+                <TableCell>{isNAN ? "" : item.nomatunda}</TableCell>
+                <TableCell>{item.account}</TableCell>
+                <TableCell>{item.bank}</TableCell>
+                {/* <TableCell>{getStatusBadge(item.status)}</TableCell> */}
+                <TableCell className="text-right">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className="h-8 w-8 p-0">
+                        <span className="sr-only">Open menu</span>
+                        <MoreVertical className="h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem onClick={() => {}}>
+                        <Eye className="mr-2 h-4 w-4" />
+                        <span>View</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => {}}>
+                        <Trash2 className="mr-2 h-4 w-4" />
+                        <span>Delete</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
       <div className="mt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
@@ -274,9 +275,9 @@ CustomTableProps) {
           </Button>
         </div>
         <div className="flex items-center space-x-2">
-          <p className="text-sm text-gray-500">
+          {/* <p className="text-sm text-gray-500">
             {selectedItems.length} of {filteredData.length} item(s) selected
-          </p>
+          </p> */}
           <Select
             value={rowsPerPage.toString()}
             onValueChange={handleRowsPerPageChange}

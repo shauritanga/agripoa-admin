@@ -25,7 +25,7 @@ export default async function Sales() {
         sale.farmer.toLowerCase().includes(farmer.first_name.toLowerCase()) &&
         sale.farmer.toLowerCase().includes(farmer.middle_name.toLowerCase())
     )[0];
-    const dob = farmer.dob.split("/")[2];
+    const dob = farmer.dob?.split("/")[2];
     const bornYear = parseInt(dob);
     const currentYear = new Date().getFullYear();
 
