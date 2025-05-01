@@ -1,28 +1,9 @@
-export type Farmer = {
-  first_name: string;
-  middle_name: string;
-  last_name: string;
-  gender: string;
-  number_of_trees_with_fruits: number;
-  number_of_trees: number;
-  bank_name: string;
-  village: string;
-  phone: string;
-  account_number: string;
-  id: number;
-  age: null;
-  ward: string;
-  zone: string;
-  nida: string;
-  dob: string;
-  farm_size: number;
-};
-
 export type Sale = {
-  id: number;
+  id: string;
   farmer: string;
-  amount: string;
+  amount: number;
   weight: number;
+  type: string;
   date: string;
   commission: number;
   zone: string;

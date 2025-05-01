@@ -1,14 +1,28 @@
-import SideNav from "@/components/dashboard/sidenav";
+import type { Metadata } from "next";
 
-export const dynamic = "force-dynamic";
+import { Inter } from "next/font/google";
+import { Sidebar } from "../components/Sidebar";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Avocado Cooperative",
+  description: "Management system for avocado farmers cooperative",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-      <div className="w-full flex-none md:w-64">
-        <SideNav />
-      </div>
-      <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
-    </div>
+    <html lang="en">
+      <body className={inter.className}>
+        <div className="flex h-screen">
+          <Sidebar />
+          <main className="flex-1 overflow-y-auto ml-2">{children}</main>
+        </div>
+      </body>
+    </html>
   );
 }

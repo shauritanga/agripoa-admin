@@ -27,7 +27,7 @@ import {
 import { MoreVertical, Eye, Trash2 } from "lucide-react";
 
 interface DataItem {
-  id: number;
+  id: string;
   name: string;
   gender: string;
   ward: string;

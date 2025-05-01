@@ -195,9 +195,9 @@ CustomTableProps) {
               <SelectValue placeholder="Rows" />
             </SelectTrigger>
             <SelectContent>
-              {[5, 10, 20, 50].map((value) => (
-                <SelectItem key={value} value={value.toString()}>
-                  {value} rows
+              {[5, 10, 20, 50].map((item) => (
+                <SelectItem key={item} value={item.toString()}>
+                  {item} rows
                 </SelectItem>
               ))}
             </SelectContent>
